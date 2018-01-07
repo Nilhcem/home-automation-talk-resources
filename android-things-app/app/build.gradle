@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 27
@@ -21,7 +22,15 @@ android {
     }
 }
 
+ext.arch_version = '1.0.0'
+ext.support_version = '27.0.2'
+
 dependencies {
     compileOnly 'com.google.android.things:androidthings:0.6.1-devpreview'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    implementation "com.android.support:appcompat-v7:$support_version"
+
+    implementation "android.arch.lifecycle:extensions:$arch_version"
+    kapt "android.arch.lifecycle:compiler:$arch_version"
 }
