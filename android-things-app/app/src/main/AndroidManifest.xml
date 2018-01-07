@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nilhcem.androidthings.homeautomation">
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <uses-feature android:name="android.hardware.bluetooth_le" />
+
     <application android:theme="@style/AppTheme">
         <uses-library android:name="com.google.android.things" />
 
