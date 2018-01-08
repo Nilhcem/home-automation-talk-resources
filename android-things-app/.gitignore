@@ -9,3 +9,6 @@ gradle.properties
 # IntelliJ
 *.iml
 .idea/
+
+# Firebase configuration
+google-services.json

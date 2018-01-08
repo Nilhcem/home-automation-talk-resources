@@ -30,7 +30,12 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
     implementation "com.android.support:appcompat-v7:$support_version"
+    implementation "com.android.support:support-v4:$support_version"
 
     implementation "android.arch.lifecycle:extensions:$arch_version"
     kapt "android.arch.lifecycle:compiler:$arch_version"
+
+    implementation 'com.google.firebase:firebase-firestore:11.8.0'
 }
+
+apply plugin: 'com.google.gms.google-services'
