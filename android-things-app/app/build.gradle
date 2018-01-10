@@ -12,6 +12,9 @@ android {
         targetSdkVersion 27
         versionCode 1
         versionName '1.0'
+
+        buildConfigField "String", "FIREBASE_EMAIL", "\"user-email\""
+        buildConfigField "String", "FIREBASE_PASSWORD", "\"user-password\""
     }
 
     buildTypes {
@@ -23,6 +26,7 @@ android {
 }
 
 ext.arch_version = '1.0.0'
+ext.gms_version = '11.6.0' // Embedded in 0.6.1-devpreview
 ext.support_version = '27.0.2'
 
 dependencies {
@@ -35,7 +39,8 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:$arch_version"
     kapt "android.arch.lifecycle:compiler:$arch_version"
 
-    implementation 'com.google.firebase:firebase-firestore:11.8.0'
+    implementation "com.google.firebase:firebase-auth:$gms_version"
+    implementation "com.google.firebase:firebase-firestore:$gms_version"
 }
 
 apply plugin: 'com.google.gms.google-services'
