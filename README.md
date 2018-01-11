@@ -13,4 +13,5 @@ This repository contains code samples from the "Home Automation with Android Thi
   * `01-receiver`: Arduino sketch to receive nRF signals _(you need a 17.32cm antenna for 433Mhz (solder or copper wire))_
   * `02-transmitter`: Arduino sketch to send radio frequencies.
 * `bluetoothle-bulb`: Bluetooth HCI packets in the `btsnoop_hci.log` file.
-* `android-things-app`: Android Things application
+* `android-things-app`: Android Things application listening to Firebase Cloud Firestore to control home devices
+* `google-cloud-function`: A Cloud Function that updates a Firebase Cloud Firestore when receiving device Actions on Google Smart Home traits

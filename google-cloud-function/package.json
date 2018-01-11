@@ -1,0 +1,15 @@
+{
+  "name": "home-automation-gcf",
+  "description": "A Cloud Function that updates a Firebase Cloud Firestore when receiving device Actions on Google Smart Home traits",
+  "version": "0.0.1",
+  "main": "app.js",
+  "private": true,
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Nilhcem/home-automation-talk-resources.git"
+  },
+  "dependencies": {
+    "firebase-admin": "^5.7.0"
+  }
+}
