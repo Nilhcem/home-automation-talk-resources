@@ -12,6 +12,7 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import android.support.annotation.ColorInt
 import android.util.Log
+import com.nilhcem.androidthings.homeautomation.device.data.model.Lightbulb
 import java.util.*
 
 class MagicBlueRgbBulb(private val context: Context) : LifecycleObserver {
@@ -29,6 +30,8 @@ class MagicBlueRgbBulb(private val context: Context) : LifecycleObserver {
     private var bluetoothGatt: BluetoothGatt? = null
     private var pendingData: ByteArray? = null
     private var isInitialized: Boolean = false
+
+    private var prevState: Lightbulb? = null
 
     private val gattCallback = object : BluetoothGattCallback() {
         override fun onConnectionStateChange(gatt: BluetoothGatt, status: Int, newState: Int) {
@@ -95,15 +98,27 @@ class MagicBlueRgbBulb(private val context: Context) : LifecycleObserver {
         context.unregisterReceiver(bluetoothReceiver)
     }
 
-    fun on() {
+    fun onStateChanged(newState: Lightbulb) {
+        if (newState.on != prevState?.on) {
+            if (newState.on) on() else off()
+        }
+
+        if (newState.colorSpectrumRGB != prevState?.colorSpectrumRGB) {
+            setColor(newState.colorSpectrumRGB)
+        }
+
+        prevState = newState
+    }
+
+    private fun on() {
         sendData(byteArrayOf(0xcc.toByte(), 0x23.toByte(), 0x33.toByte()))
     }
 
-    fun off() {
+    private fun off() {
         sendData(byteArrayOf(0xcc.toByte(), 0x24.toByte(), 0x33.toByte()))
     }
 
-    fun setColor(@ColorInt color: Int) {
+    private fun setColor(@ColorInt color: Int) {
         sendData(colorToCharacteristicByteArray(color))
     }
 

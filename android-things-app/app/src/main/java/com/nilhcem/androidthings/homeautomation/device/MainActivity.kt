@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.nilhcem.androidthings.homeautomation.device.components.MagicBlueRgbBulb
+import com.nilhcem.androidthings.homeautomation.device.data.model.Lightbulb
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,9 +20,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         lifecycle.addObserver(lightbulb)
 
-        viewModel.firestoreLiveData.observe({ lifecycle }) {
-            it?.let { device ->
-                Log.i(TAG, device.toString())
+        viewModel.firestoreLiveData.observe({ lifecycle }) { device ->
+            Log.i(TAG, "Update device: $device")
+
+            when (device) {
+                is Lightbulb -> lightbulb.onStateChanged(device)
             }
         }
     }
