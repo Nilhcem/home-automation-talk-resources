@@ -10,6 +10,6 @@
     "url": "git://github.com/Nilhcem/home-automation-talk-resources.git"
   },
   "dependencies": {
-    "firebase-admin": "^5.7.0"
+    "firebase-admin": "^5.8.0"
   }
 }
