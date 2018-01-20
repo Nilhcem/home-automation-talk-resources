@@ -15,3 +15,4 @@ This repository contains code samples from the "Home Automation with Android Thi
 * `bluetoothle-bulb`: Bluetooth HCI packets in the `btsnoop_hci.log` file.
 * `android-things-app`: Android Things application listening to Firebase Cloud Firestore to control home devices
 * `google-cloud-function`: A Cloud Function that updates a Firebase Cloud Firestore when receiving device Actions on Google Smart Home traits
+* `fake-oauth2-server`: A NodeJS + Express OAuth2 server using a memory datastore

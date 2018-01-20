@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>Home Automation</title>
+</head>
+<body>
+<h1>Sign in to start your session</h1><br><br>
+
+<form action="/login" method="post">
+    <input type="text" name="username" size="60" value="Nilhcem"><br>
+    <input type="password" name="password" size="60" value="Follow me on #Twitter!">
+    <input type="hidden" name="redirect" value="<%= redirect%>">
+    <input type="hidden" name="client_id" value="<%= client_id%>">
+    <input type="hidden" name="redirect_uri" value="<%= redirect_uri%>">
+    <input type="hidden" name="state" value="<%= state%>"><br><br>
+    <input type="submit" value="Sign In">
+</form>
+</body>
+</html>

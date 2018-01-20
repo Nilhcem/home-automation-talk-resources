@@ -1,5 +1,6 @@
-// User Id in Firestore
+// Change those 2 values (userId in Firestore / OAuth2 token returned by the fake oauth2 server)
 const userId = 'tP7PVhRDNHTgznofXFJPS6VDem83';
+const expectedToken = 'psokmCxKjfhk7qHLeYd1';
 
 // Initialize Cloud Firestore
 const admin = require('firebase-admin');
@@ -12,9 +13,9 @@ var db = admin.firestore();
 exports.ha = function(req, res) {
   let reqBody = req.body;
   let authToken = req.headers.authorization ? req.headers.authorization.split(' ')[1] : null;
-  console.log(`/ha called by Bearer ${authToken}`, reqBody);
+  let intent = (authToken === expectedToken) ? reqBody.inputs[0].intent : null;
 
-  switch (reqBody.inputs[0].intent) {
+  switch (intent) {
     case 'action.devices.SYNC':
       sync(reqBody, res);
       break;
