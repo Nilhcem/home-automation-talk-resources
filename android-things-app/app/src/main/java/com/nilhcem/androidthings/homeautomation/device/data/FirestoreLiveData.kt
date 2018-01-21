@@ -10,6 +10,7 @@ import com.google.firebase.firestore.ListenerRegistration
 import com.nilhcem.androidthings.homeautomation.BuildConfig
 import com.nilhcem.androidthings.homeautomation.device.data.model.Device
 import com.nilhcem.androidthings.homeautomation.device.data.model.Lightbulb
+import com.nilhcem.androidthings.homeautomation.device.data.model.Outlet
 import com.nilhcem.androidthings.homeautomation.device.data.model.Unknown
 
 class FirestoreLiveData : LiveData<Device>() {
@@ -61,6 +62,7 @@ class FirestoreLiveData : LiveData<Device>() {
                         with(documentChange.document) {
                             val device = when (id) {
                                 "lightbulb" -> Lightbulb(getBoolean("on"), getLong("spectrumRGB").toInt())
+                                "fan" -> Outlet(getBoolean("on"))
                                 else -> Unknown
                             }
 

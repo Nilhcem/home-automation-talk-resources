@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.nilhcem.androidthings.homeautomation.device.components.MagicBlueRgbBulb
+import com.nilhcem.androidthings.homeautomation.device.components.PowerOutlet
+import com.nilhcem.androidthings.homeautomation.device.core.ext.addObservers
 import com.nilhcem.androidthings.homeautomation.device.data.model.Lightbulb
+import com.nilhcem.androidthings.homeautomation.device.data.model.Outlet
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,17 +17,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val lightbulb by lazy { MagicBlueRgbBulb(applicationContext) }
+    private val fan by lazy { PowerOutlet() }
     private val viewModel by lazy { ViewModelProviders.of(this).get(MainViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        lifecycle.addObserver(lightbulb)
+        lifecycle.addObservers(lightbulb, fan)
 
         viewModel.firestoreLiveData.observe({ lifecycle }) { device ->
             Log.i(TAG, "Update device: $device")
 
             when (device) {
                 is Lightbulb -> lightbulb.onStateChanged(device)
+                is Outlet -> fan.onStateChanged(device)
             }
         }
     }
