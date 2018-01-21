@@ -1,3 +1,13 @@
+# google-cloud-function
+
+A Cloud Function that updates a Firebase Cloud Firestore when receiving device Actions on Google Smart Home traits
+
+
+## Description
+
+* `01-simple`: Compatible with a single lightbulb
+
+
 ## Configuration
 
 * Enable the Cloud Functions API and install the Google Cloud SDK ([quickstart guide](https://cloud.google.com/functions/docs/quickstart))

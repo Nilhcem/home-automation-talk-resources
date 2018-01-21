@@ -1,6 +1,6 @@
-// Change those 2 values (userId in Firestore / OAuth2 token returned by the fake oauth2 server)
-const userId = 'tP7PVhRDNHTgznofXFJPS6VDem83';
-const expectedToken = 'psokmCxKjfhk7qHLeYd1';
+// Change those 2 values:
+const userId = 'tP7PVhRDNHTgznofXFJPS6VDem83'; // User ID in Google Cloud Firestore
+const expectedToken = 'psokmCxKjfhk7qHLeYd1'; // OAuth2 token from the fake-oauth2-server
 
 // Initialize Cloud Firestore
 const admin = require('firebase-admin');
