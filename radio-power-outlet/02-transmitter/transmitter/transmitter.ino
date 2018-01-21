@@ -5,7 +5,7 @@ const unsigned int DELAY_SHORT = 350;
 const unsigned int DELAY_LONG = 1400;
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
   pinMode(DATA_PIN, OUTPUT);
 }
 
@@ -21,10 +21,7 @@ void loop() {
     } else {
       codeToSend = 1748757120;
     }
-
     sendCode(codeToSend);
-    Serial.print("Code sent: ");
-    Serial.println(codeToSend);
   }
 }
 

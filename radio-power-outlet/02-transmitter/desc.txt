@@ -1,9 +1,9 @@
 Schematics:
 Data	Digital 2
-VCC	VCC (5V / 3.3V)
+VCC	VCC (5V)
 GND	GND
 
-Open a serial terminal (115200), no line ending and send:
+Open a serial terminal (9600), no line ending and send:
 0	to emit value 1748757136 (turn on first plug)
 1	to emit value 1748757120 (turn off first plug)
 
