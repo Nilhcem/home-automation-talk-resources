@@ -3,12 +3,6 @@
 A Cloud Function that updates a Firebase Cloud Firestore when receiving device Actions on Google Smart Home traits
 
 
-## Description
-
-* `01-simple`: Compatible with a single lightbulb
-* `02-advanced`: Compatible with a lightbulb, a 3dlamp, a vacuum, and an outlet
-
-
 ## Configuration
 
 * Enable the Cloud Functions API and install the Google Cloud SDK ([quickstart guide](https://cloud.google.com/functions/docs/quickstart))

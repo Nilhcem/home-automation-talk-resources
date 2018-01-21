@@ -6,7 +6,7 @@ Not recommended for production. Use a real OAuth2 server instead.
 ## Configuration
 
 - Open the `datastore.js` file and replace the `userToken` variable with a randomly generated token
-- Modify the `../google-cloud-function/*/app.js` `expectedToken` value with your new token
+- Modify the `../google-cloud-function/app.js` `expectedToken` value with your new token
 - Deploy the server locally with `npm install; node app.js`
 - Use ngrok to expose the server to the Internet with `ngrok http 3000`
 - In your Android phone's Home control settings, add your Actions on Google test device, and login
