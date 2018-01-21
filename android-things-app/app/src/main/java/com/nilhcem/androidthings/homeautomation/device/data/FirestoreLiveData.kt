@@ -8,10 +8,7 @@ import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import com.nilhcem.androidthings.homeautomation.BuildConfig
-import com.nilhcem.androidthings.homeautomation.device.data.model.Device
-import com.nilhcem.androidthings.homeautomation.device.data.model.Lightbulb
-import com.nilhcem.androidthings.homeautomation.device.data.model.Outlet
-import com.nilhcem.androidthings.homeautomation.device.data.model.Unknown
+import com.nilhcem.androidthings.homeautomation.device.data.model.*
 
 class FirestoreLiveData : LiveData<Device>() {
 
@@ -63,6 +60,7 @@ class FirestoreLiveData : LiveData<Device>() {
                             val device = when (id) {
                                 "lightbulb" -> Lightbulb(getBoolean("on"), getLong("spectrumRGB").toInt())
                                 "fan" -> Outlet(getBoolean("on"))
+                                "3dlamp" -> Lamp3d(getBoolean("on"), getLong("spectrumRGB").toInt())
                                 else -> Unknown
                             }
 

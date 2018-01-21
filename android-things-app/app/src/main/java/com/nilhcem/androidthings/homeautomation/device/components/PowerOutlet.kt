@@ -7,14 +7,13 @@ import com.google.android.things.pio.PeripheralManagerService
 import com.google.android.things.pio.UartDevice
 import com.nilhcem.androidthings.homeautomation.device.data.model.Outlet
 
-class PowerOutlet : LifecycleObserver {
+class PowerOutlet : Component<Outlet>(), LifecycleObserver {
 
     companion object {
         private const val UART_NAME = "UART0"
     }
 
     private var uartDevice: UartDevice? = null
-    private var prevState: Outlet? = null
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun start() {
@@ -26,12 +25,10 @@ class PowerOutlet : LifecycleObserver {
         closeUart()
     }
 
-    fun onStateChanged(newState: Outlet) {
+    override fun onStateChanged(prevState: Outlet?, newState: Outlet) {
         if (newState.on != prevState?.on) {
             if (newState.on) on() else off()
         }
-
-        prevState = newState
     }
 
     private fun on() = sendUart('1')

@@ -15,12 +15,12 @@ import android.util.Log
 import com.nilhcem.androidthings.homeautomation.device.data.model.Lightbulb
 import java.util.*
 
-class MagicBlueRgbBulb(private val context: Context) : LifecycleObserver {
+class MagicBlueRgbBulb(private val context: Context) : Component<Lightbulb>(), LifecycleObserver {
 
     companion object {
         private val TAG = MagicBlueRgbBulb::class.java.simpleName!!
 
-        private val DEVICE_ADDRESS = "F8:1D:78:62:92:2F"
+        private const val DEVICE_ADDRESS = "F8:1D:78:62:92:2F"
         private val SERVICE_UUID = UUID.fromString("0000ffe5-0000-1000-8000-00805f9b34fb")
         private val CHARACTERISTIC_UUID = UUID.fromString("0000ffe9-0000-1000-8000-00805f9b34fb")
     }
@@ -30,8 +30,6 @@ class MagicBlueRgbBulb(private val context: Context) : LifecycleObserver {
     private var bluetoothGatt: BluetoothGatt? = null
     private var pendingData: ByteArray? = null
     private var isInitialized: Boolean = false
-
-    private var prevState: Lightbulb? = null
 
     private val gattCallback = object : BluetoothGattCallback() {
         override fun onConnectionStateChange(gatt: BluetoothGatt, status: Int, newState: Int) {
@@ -72,7 +70,6 @@ class MagicBlueRgbBulb(private val context: Context) : LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun start() {
-        Log.d(TAG, "Start")
         require(context.packageManager.hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) { "App requires Bluetooth support" }
 
         // Register for system Bluetooth events
@@ -89,7 +86,6 @@ class MagicBlueRgbBulb(private val context: Context) : LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     fun stop() {
-        Log.d(TAG, "Stop")
         isInitialized = false
 
         if (bluetoothAdapter.isEnabled) {
@@ -98,7 +94,7 @@ class MagicBlueRgbBulb(private val context: Context) : LifecycleObserver {
         context.unregisterReceiver(bluetoothReceiver)
     }
 
-    fun onStateChanged(newState: Lightbulb) {
+    override fun onStateChanged(prevState: Lightbulb?, newState: Lightbulb) {
         if (newState.on != prevState?.on) {
             if (newState.on) on() else off()
         }
@@ -106,8 +102,6 @@ class MagicBlueRgbBulb(private val context: Context) : LifecycleObserver {
         if (newState.colorSpectrumRGB != prevState?.colorSpectrumRGB) {
             setColor(newState.colorSpectrumRGB)
         }
-
-        prevState = newState
     }
 
     private fun on() {
