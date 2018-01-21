@@ -6,6 +6,7 @@ A Cloud Function that updates a Firebase Cloud Firestore when receiving device A
 ## Description
 
 * `01-simple`: Compatible with a single lightbulb
+* `02-advanced`: Compatible with a lightbulb, a 3dlamp, a vacuum, and an outlet
 
 
 ## Configuration
