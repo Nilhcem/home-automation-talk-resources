@@ -1,30 +1,36 @@
+const userToken = 'psokmCxKjfhk7qHLeYd1'; // Replace me
+const userId = '1234';
+const userName = 'Nilhcem';
+const clientId = 'RKkWfsi0Z9';
+const clientSecret = 'eToBzeBT7OwrPQO8mZHsZtLp1qhQbe';
+
 const Data = {};
 
 const Auth = {
   clients: {
-    'RKkWfsi0Z9': {
-      clientId: 'RKkWfsi0Z9',
-      clientSecret: 'eToBzeBT7OwrPQO8mZHsZtLp1qhQbe'
+    [clientId]: {
+      clientId: clientId,
+      clientSecret: clientSecret
     }
   },
   tokens: {
-    'psokmCxKjfhk7qHLeYd1': {
-      uid: '1234',
-      accessToken: 'psokmCxKjfhk7qHLeYd1',
-      refreshToken: 'psokmCxKjfhk7qHLeYd1',
-      userId: '1234'
+    [userToken]: {
+      uid: userId,
+      accessToken: userToken,
+      refreshToken: userToken,
+      userId: userId
     }
   },
   users: {
-    '1234': {
-      uid: '1234',
-      name: 'Nilhcem',
+    [userId]: {
+      uid: userId,
+      name: userName,
       password: 'Follow me on #Twitter!',
-      tokens: ['psokmCxKjfhk7qHLeYd1']
+      tokens: [userToken]
     }
   },
   usernames: {
-    'Nilhcem': '1234'
+    [userName]: userId
   },
   authcodes: {}
 };
