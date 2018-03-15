@@ -3,7 +3,7 @@ package com.nilhcem.androidthings.homeautomation.device.components
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.LifecycleObserver
 import android.arch.lifecycle.OnLifecycleEvent
-import com.google.android.things.pio.PeripheralManagerService
+import com.google.android.things.pio.PeripheralManager
 import com.google.android.things.pio.UartDevice
 import com.nilhcem.androidthings.homeautomation.device.data.model.Outlet
 
@@ -35,7 +35,7 @@ class PowerOutlet : Component<Outlet>(), LifecycleObserver {
     private fun off() = sendUart('0')
 
     private fun openUart() {
-        uartDevice = PeripheralManagerService().openUartDevice(UART_NAME).apply {
+        uartDevice = PeripheralManager.getInstance().openUartDevice(UART_NAME).apply {
             setBaudrate(9600)
             setDataSize(8)
             setParity(UartDevice.PARITY_NONE)

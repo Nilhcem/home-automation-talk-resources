@@ -27,11 +27,11 @@ android {
 }
 
 ext.arch_version = '1.0.0'
-ext.gms_version = '11.6.0' // Embedded in 0.6.1-devpreview
+ext.gms_version = '11.8.0' // Embedded in 0.7-devpreview
 ext.support_version = '27.0.2'
 
 dependencies {
-    compileOnly 'com.google.android.things:androidthings:0.6.1-devpreview'
+    compileOnly 'com.google.android.things:androidthings:0.7-devpreview'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
     implementation "com.android.support:appcompat-v7:$support_version"
