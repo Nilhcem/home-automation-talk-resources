@@ -43,7 +43,7 @@ dependencies {
     implementation "com.google.firebase:firebase-auth:$gms_version"
     implementation "com.google.firebase:firebase-firestore:$gms_version"
 
-    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
